@@ -9,10 +9,10 @@ from selenium.webdriver.chrome.options import Options
 
 from utils import attach
 
-DEFAULT_BROWSER_VERSION = '128.0'
+DEFAULT_BROWSER_VERSION = '125.0'
 
 def pytest_addoption(parser):
-    parser.addoption('--browser_version', default='128.0')
+    parser.addoption('--browser_version', default='125.0')
 
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
@@ -24,7 +24,7 @@ def open_browser(request):
     browser_version = browser_version if browser_version != '' else DEFAULT_BROWSER_VERSION
     options = Options()
     selenoid_capabilities = {
-            'browserName': 'chrome',
+            'browserName': 'firefox',
             'browserVersion': browser_version,
             'selenoid:options': {
                 'enableVNC': True,
