@@ -1,5 +1,5 @@
 import allure
-from selene import browser, be, have
+from selene import browser, be
 
 
 class PageHeader():
