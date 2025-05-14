@@ -25,14 +25,9 @@ def load_env():
     load_dotenv()
 
 
-@pytest.fixture(scope='session')
-def get_option_browser_version(request):
-    return request.config.getoption('--browser_version')
-
-
-@pytest.fixture(scope='session')
-def setup_browser(get_option_browser_version):
-    browser_version = get_option_browser_version
+@pytest.fixture(scope='function')
+def setup_browser(request):
+    browser_version = request.config.getoption('--browser_version')
     browser_version = browser_version if browser_version != '' else DEFAULT_BROWSER_VERSION
 
     options = Options()
@@ -57,17 +52,9 @@ def setup_browser(get_option_browser_version):
     )
 
     browser.config.driver = driver
-    browser.config.base_url = 'https://x5club.ru'
+    browser.config.base_url = 'https://x5club.ru/'
     browser.driver.maximize_window()
-
-    yield
-
-    browser.quit()
-
-
-@pytest.fixture(scope='function')
-def open_homepage(setup_browser):
-    browser.open('/')
+    browser.config.timeout = 10.0
 
     yield browser
 
@@ -75,3 +62,5 @@ def open_homepage(setup_browser):
     attach.add_logs(browser)
     attach.add_html(browser)
     attach.add_video(browser)
+
+    browser.quit()
