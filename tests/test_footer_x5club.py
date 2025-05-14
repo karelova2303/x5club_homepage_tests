@@ -7,18 +7,17 @@ page_footer = PageFooter()
 
 @allure.tag('Web', 'Prod')
 @allure.label('owner', 'Karelova Ekaterina')
-@allure.title('Проверка отображения попапа "Свяжитесь с нами" в футере')
+@allure.suite('Проверка кликабельности кнопок и иконок в футере')
+@allure.title('Отображения всплывающего окна при клике на кнопку "Свяжитесь с нами"')
 @allure.link('https://x5club.ru')
-def test_should_be_clickable_contact_us(open_homepage):
+def test_should_be_clickable_contact_us(setup_browser):
     page_footer.should_be_contact_us('Свяжитесь с нами')
 
 
 @allure.tag('Web', 'Prod')
 @allure.label('owner', 'Karelova Ekaterina')
-@allure.title('Проверка кликабельности иконок соц. сетей в футере')
+@allure.suite('Проверка кликабельности кнопок и иконок в футере')
+@allure.title('Кликабельность иконок социальных сетей: ВК, Телеграм, Дзен, Одноклассники')
 @allure.link('https://x5club.ru')
-def test_should_be_clickable_social_network_icon(open_homepage):
-    page_footer.should_be_clickable_vk()
-    page_footer.should_be_clickable_telegram()
-    page_footer.should_be_clickable_dzen()
-    page_footer.should_be_clickable_ok()
+def test_should_be_clickable_social_network_icon(setup_browser):
+    page_footer.should_be_clickable_social_network_icon()
