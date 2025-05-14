@@ -26,17 +26,25 @@ class PageFooter():
             self.title_popup.should(have.exact_text(value))
 
     def should_be_clickable_vk(self):
-        self.scroll_page_to_footer()
-        self.vk_icon.should(be.clickable)
+        with allure.step('Скроллим страницу вниз'):
+            self.scroll_page_to_footer()
+        with allure.step('Проверяем кликабельность иконки "ВКонтакте"'):
+            self.vk_icon.should(be.clickable)
 
     def should_be_clickable_telegram(self):
-        self.scroll_page_to_footer()
-        self.t_icon.should(be.clickable)
+        with allure.step('Скроллим страницу вниз'):
+            self.scroll_page_to_footer()
+        with allure.step('Проверяем кликабельность иконки "Телеграм"'):
+            self.t_icon.should(be.clickable)
 
     def should_be_clickable_dzen(self):
-        self.scroll_page_to_footer()
-        self.dzen_icon.should(be.clickable)
+        with allure.step('Скроллим страницу вниз'):
+            self.scroll_page_to_footer()
+        with allure.step('Проверяем кликабельность иконки "Дзен"'):
+            self.dzen_icon.should(be.clickable)
 
     def should_be_clickable_ok(self):
-        self.scroll_page_to_footer()
-        self.ok_icon.should(be.clickable)
+        with allure.step('Скроллим страницу вниз'):
+            self.scroll_page_to_footer()
+        with allure.step('Проверяем кликабельность иконки "Одноклассники"'):
+            self.ok_icon.should(be.clickable)
